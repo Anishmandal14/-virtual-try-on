@@ -1,0 +1,5 @@
+{
+  "name": "Virtual Try-On",
+  "description": "An application that allows users to virtually try on outfits by combining a photo of themselves with a photo of an outfit.",
+  "requestFramePermissions": []
+}

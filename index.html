@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Try-On Studio</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.16.0",
+    "marked": "https://aistudiocdn.com/marked@^16.2.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Virtual Try-On Studio</h1>
+        <p>Upload your photo and an outfit to see the magic happen!</p>
+      </header>
+
+      <div class="content-wrapper">
+        <div class="upload-section">
+          <h2>1. Upload Your Photo</h2>
+          <label for="person-upload" class="drop-zone" id="person-drop-zone" aria-label="Upload your photo">
+            <div class="drop-zone-prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>Click or drag to upload</span>
+            </div>
+            <img id="person-preview" class="preview-image" alt="Person preview" />
+          </label>
+          <input type="file" id="person-upload" accept="image/*" class="file-input" />
+        </div>
+
+        <div class="upload-section">
+          <h2>2. Upload Outfit</h2>
+          <label for="outfit-upload" class="drop-zone" id="outfit-drop-zone" aria-label="Upload outfit photo">
+            <div class="drop-zone-prompt">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+              <span>Click or drag to upload</span>
+            </div>
+            <img id="outfit-preview" class="preview-image" alt="Outfit preview" />
+          </label>
+          <input type="file" id="outfit-upload" accept="image/*" class="file-input" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="generate-button" disabled>Generate Makeover</button>
+      </div>
+
+      <section class="results-section" id="results-section" aria-live="polite">
+        <h2>Your New Look</h2>
+        <div id="result-wrapper">
+          <div class="loader" id="loader" role="status" aria-label="Generating image"></div>
+          <img id="result-image" alt="Generated try-on image" />
+        </div>
+        <a id="download-button" class="button" href="#" download="virtual-try-on.png" style="display: none;">Download Image</a>
+      </section>
+
+       <div id="error-container" class="error-message" role="alert"></div>
+
+    </main>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>
